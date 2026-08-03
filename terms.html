@@ -31,6 +31,7 @@
 </head>
 <body>
     <div class="container">
+<div class="lang-en">
         <h1>Terms of Service</h1>
         <p><strong>Last updated: August 03, 2026</strong></p>
         
@@ -59,8 +60,9 @@
         <h2>6. Changes to Terms</h2>
         <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
     
-    <div class="lang-vi">
-        <hr>
+    </div>
+<div class="lang-vi" style="display: none;">
+        
         <h2>Điều Khoản & Điều Kiện</h2>
         <p><strong>Cập nhật lần cuối:</strong> 3 Tháng 8, 2026</p>
 
@@ -83,5 +85,23 @@
     </div>
     
 </div>
-</body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var userLang = navigator.language || navigator.userLanguage;
+            var isVi = userLang.toLowerCase().includes('vi');
+            
+            var enDiv = document.querySelector('.lang-en');
+            var viDiv = document.querySelector('.lang-vi');
+            
+            if (isVi) {
+                if (enDiv) enDiv.style.display = 'none';
+                if (viDiv) viDiv.style.display = 'block';
+            } else {
+                if (enDiv) enDiv.style.display = 'block';
+                if (viDiv) viDiv.style.display = 'none';
+            }
+        });
+    </script>
+    </body>
 </html>
