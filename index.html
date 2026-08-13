@@ -28,29 +28,6 @@
             observer.observe(el);
           });
         }
-
-        // Language switcher logic
-        const langToggle = document.getElementById('lang-toggle');
-        const setLanguage = (lang) => {
-            if (lang === 'vi') {
-                document.body.classList.add('lang-vi');
-                document.documentElement.lang = 'vi';
-                langToggle.textContent = 'EN';
-            } else {
-                document.body.classList.remove('lang-vi');
-                document.documentElement.lang = 'en';
-                langToggle.textContent = 'VI';
-            }
-            localStorage.setItem('stampfolio-lang', lang);
-        };
-        
-        const savedLang = localStorage.getItem('stampfolio-lang') || (navigator.language.startsWith('vi') ? 'vi' : 'en');
-        setLanguage(savedLang);
-
-        langToggle.addEventListener('click', () => {
-            const isVi = document.body.classList.contains('lang-vi');
-            setLanguage(isVi ? 'en' : 'vi');
-        });
       });
     </script>
 </head>
@@ -58,112 +35,150 @@
     <div class="container">
         <header class="nav">
             <div class="logo">Stampfolio</div>
-            <button id="lang-toggle" class="lang-switch-btn" aria-label="Toggle language">VI</button>
         </header>
 
-        <section class="hero">
-            <div class="glass-card">
-                <img src="app-icon.png" alt="Stampfolio App Icon" class="app-icon" style="width: 120px; height: 120px; border-radius: 27px; margin-bottom: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                <h1>
-                    <span class="en">Turn Memories into Stamps</span>
-                    <span class="vi">Biến Kỷ Niệm Thành Tem</span>
-                </h1>
-                <p class="subtitle">
-                    <span class="en">Capture your travel moments, apply beautiful vintage and modern stamp templates, and collect them in your personalized digital scrapbook.</span>
-                    <span class="vi">Lưu giữ khoảnh khắc du lịch, áp dụng các mẫu tem cổ điển và hiện đại tuyệt đẹp, và thu thập chúng vào cuốn sổ lưu niệm kỹ thuật số của riêng bạn.</span>
-                </p>
-                <a href="https://apps.apple.com/vn/app/stampfolio-photo-to-stamp/id6799593566" target="_blank" rel="noopener noreferrer" class="btn">
-                    <span class="en">Get on the App Store</span>
-                    <span class="vi">Tải trên App Store</span>
-                </a>
-            </div>
-        </section>
+        <!-- ENGLISH VERSION -->
+        <div class="lang-en">
+            <section class="hero">
+                <div class="glass-card">
+                    <img src="app-icon.png" alt="Stampfolio App Icon" class="app-icon" style="width: 120px; height: 120px; border-radius: 27px; margin-bottom: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <h1>Turn Memories into Stamps</h1>
+                    <p class="subtitle">Capture your travel moments, apply beautiful vintage and modern stamp templates, and collect them in your personalized digital scrapbook.</p>
+                    <a href="https://apps.apple.com/vn/app/stampfolio-photo-to-stamp/id6799593566" target="_blank" rel="noopener noreferrer" class="btn">Get on the App Store</a>
+                </div>
+            </section>
 
-        <section class="countries-marquee scroll-reveal">
-            <div class="marquee-content">
-                <span class="country-tag"><span class="en">Vietnam Series</span><span class="vi">Bộ sưu tập Việt Nam</span></span>
-                <span class="country-tag"><span class="en">Japan Nippon</span><span class="vi">Nhật Bản Nippon</span></span>
-                <span class="country-tag"><span class="en">USA Landmarks</span><span class="vi">Địa danh Hoa Kỳ</span></span>
-                <span class="country-tag"><span class="en">Korea Hallyu</span><span class="vi">Hàn Quốc Hallyu</span></span>
-                <span class="country-tag"><span class="en">Thailand Siam</span><span class="vi">Thái Lan Siam</span></span>
-                <span class="country-tag"><span class="en">Singapore Heritage</span><span class="vi">Di sản Singapore</span></span>
-                <!-- Duplicate for seamless scroll -->
-                <span class="country-tag"><span class="en">Vietnam Series</span><span class="vi">Bộ sưu tập Việt Nam</span></span>
-                <span class="country-tag"><span class="en">Japan Nippon</span><span class="vi">Nhật Bản Nippon</span></span>
-                <span class="country-tag"><span class="en">USA Landmarks</span><span class="vi">Địa danh Hoa Kỳ</span></span>
-                <span class="country-tag"><span class="en">Korea Hallyu</span><span class="vi">Hàn Quốc Hallyu</span></span>
-                <span class="country-tag"><span class="en">Thailand Siam</span><span class="vi">Thái Lan Siam</span></span>
-                <span class="country-tag"><span class="en">Singapore Heritage</span><span class="vi">Di sản Singapore</span></span>
-            </div>
-        </section>
+            <section class="countries-marquee scroll-reveal">
+                <div class="marquee-content">
+                    <span class="country-tag">Vietnam Series</span>
+                    <span class="country-tag">Japan Nippon</span>
+                    <span class="country-tag">USA Landmarks</span>
+                    <span class="country-tag">Korea Hallyu</span>
+                    <span class="country-tag">Thailand Siam</span>
+                    <span class="country-tag">Singapore Heritage</span>
+                    <!-- Duplicate for seamless scroll -->
+                    <span class="country-tag">Vietnam Series</span>
+                    <span class="country-tag">Japan Nippon</span>
+                    <span class="country-tag">USA Landmarks</span>
+                    <span class="country-tag">Korea Hallyu</span>
+                    <span class="country-tag">Thailand Siam</span>
+                    <span class="country-tag">Singapore Heritage</span>
+                </div>
+            </section>
 
-        <section class="features-grid">
-            <div class="feature-item glass-card scroll-reveal">
-                <span class="feature-icon">🎞️</span>
-                <h3>
-                    <span class="en">Template & Palette Studio</span>
-                    <span class="vi">Studio Giao diện & Màu sắc</span>
-                </h3>
-                <p>
-                    <span class="en">Choose from dozens of layouts—Classic, Vintage Ticket, Polaroid, French Jardin, and Japanese Nippon. Match your mood with our curated color palettes.</span>
-                    <span class="vi">Chọn từ hàng chục bố cục—Cổ điển, Vé cũ, Polaroid, French Jardin, và Japanese Nippon. Phối hợp với tâm trạng của bạn bằng các bảng màu được tuyển chọn.</span>
-                </p>
-            </div>
-            <div class="feature-item glass-card scroll-reveal">
-                <span class="feature-icon">🗺️</span>
-                <h3>
-                    <span class="en">Travel to Unlock</span>
-                    <span class="vi">Du lịch để Mở khoá</span>
-                </h3>
-                <p>
-                    <span class="en">Location-aware catalog brings local templates to you. Unlock exclusive country packs like the Vietnam Heritage, Japan Tokyo Neon, and USA Wild Series as you travel.</span>
-                    <span class="vi">Danh mục theo vị trí mang đến các mẫu tem địa phương. Mở khóa các gói quốc gia độc quyền như Di sản Việt Nam, Tokyo Neon Nhật Bản và Hoa Kỳ Hoang dã khi đi du lịch.</span>
-                </p>
-            </div>
-            <div class="feature-item glass-card scroll-reveal">
-                <span class="feature-icon">📔</span>
-                <h3>
-                    <span class="en">Digital Scrapbook</span>
-                    <span class="vi">Sổ lưu niệm Kỹ thuật số</span>
-                </h3>
-                <p>
-                    <span class="en">It's not just a gallery, it's a collection. Build beautiful aesthetic albums with custom washi tape and typography to keep your moments safe.</span>
-                    <span class="vi">Không chỉ là thư viện ảnh, đó là một kho báu. Xây dựng các album mang đậm tính thẩm mỹ với băng dính washi và nghệ thuật chữ để lưu giữ kỷ niệm của bạn.</span>
-                </p>
-            </div>
-            <div class="feature-item glass-card scroll-reveal">
-                <span class="feature-icon">☁️</span>
-                <h3>
-                    <span class="en">Private & Synced</span>
-                    <span class="vi">Riêng tư & Đồng bộ</span>
-                </h3>
-                <p>
-                    <span class="en">Your photos stay on-device. Opt-in for iCloud Sync via Sign in with Apple to seamlessly sync your collections across your devices without cluttering your Camera Roll.</span>
-                    <span class="vi">Ảnh của bạn được lưu trên thiết bị. Bật Đồng bộ iCloud qua Đăng nhập bằng Apple để đồng bộ hóa liền mạch bộ sưu tập giữa các thiết bị mà không làm lộn xộn Cuộn Camera.</span>
-                </p>
-            </div>
-        </section>
+            <section class="features-grid">
+                <div class="feature-item glass-card scroll-reveal">
+                    <span class="feature-icon">🎞️</span>
+                    <h3>Template & Palette Studio</h3>
+                    <p>Choose from dozens of layouts—Classic, Vintage Ticket, Polaroid, French Jardin, and Japanese Nippon. Match your mood with our curated color palettes.</p>
+                </div>
+                <div class="feature-item glass-card scroll-reveal">
+                    <span class="feature-icon">🗺️</span>
+                    <h3>Travel to Unlock</h3>
+                    <p>Location-aware catalog brings local templates to you. Unlock exclusive country packs like the Vietnam Heritage, Japan Tokyo Neon, and USA Wild Series as you travel.</p>
+                </div>
+                <div class="feature-item glass-card scroll-reveal">
+                    <span class="feature-icon">📔</span>
+                    <h3>Digital Scrapbook</h3>
+                    <p>It's not just a gallery, it's a collection. Build beautiful aesthetic albums with custom washi tape and typography to keep your moments safe.</p>
+                </div>
+                <div class="feature-item glass-card scroll-reveal">
+                    <span class="feature-icon">☁️</span>
+                    <h3>Private & Synced</h3>
+                    <p>Your photos stay on-device. Opt-in for iCloud Sync via Sign in with Apple to seamlessly sync your collections across your devices without cluttering your Camera Roll.</p>
+                </div>
+            </section>
 
-        <footer class="footer scroll-reveal">
-            <div class="footer-links">
-                <a href="support.html">
-                    <span class="en">Support</span>
-                    <span class="vi">Hỗ trợ</span>
-                </a>
-                <a href="privacy.html">
-                    <span class="en">Privacy Policy</span>
-                    <span class="vi">Chính sách Bảo mật</span>
-                </a>
-                <a href="terms.html">
-                    <span class="en">Terms of Service</span>
-                    <span class="vi">Điều khoản Dịch vụ</span>
-                </a>
-            </div>
-            <p style="color: var(--color-text-muted); font-size: 0.9rem;">
-                <span class="en">&copy; 2026 Stampfolio. All rights reserved.</span>
-                <span class="vi">&copy; 2026 Stampfolio. Mọi quyền được bảo lưu.</span>
-            </p>
-        </footer>
+            <footer class="footer scroll-reveal">
+                <div class="footer-links">
+                    <a href="support.html">Support</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem;">&copy; 2026 Stampfolio. All rights reserved.</p>
+            </footer>
+        </div>
+
+        <!-- VIETNAMESE VERSION -->
+        <div class="lang-vi" style="display: none;">
+            <section class="hero">
+                <div class="glass-card">
+                    <img src="app-icon.png" alt="Stampfolio App Icon" class="app-icon" style="width: 120px; height: 120px; border-radius: 27px; margin-bottom: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <h1>Biến Kỷ Niệm Thành Tem</h1>
+                    <p class="subtitle">Lưu giữ khoảnh khắc du lịch, áp dụng các mẫu tem cổ điển và hiện đại tuyệt đẹp, và thu thập chúng vào cuốn sổ lưu niệm kỹ thuật số của riêng bạn.</p>
+                    <a href="https://apps.apple.com/vn/app/stampfolio-photo-to-stamp/id6799593566" target="_blank" rel="noopener noreferrer" class="btn">Tải trên App Store</a>
+                </div>
+            </section>
+
+            <section class="countries-marquee scroll-reveal">
+                <div class="marquee-content">
+                    <span class="country-tag">Bộ sưu tập Việt Nam</span>
+                    <span class="country-tag">Nhật Bản Nippon</span>
+                    <span class="country-tag">Địa danh Hoa Kỳ</span>
+                    <span class="country-tag">Hàn Quốc Hallyu</span>
+                    <span class="country-tag">Thái Lan Siam</span>
+                    <span class="country-tag">Di sản Singapore</span>
+                    <!-- Duplicate for seamless scroll -->
+                    <span class="country-tag">Bộ sưu tập Việt Nam</span>
+                    <span class="country-tag">Nhật Bản Nippon</span>
+                    <span class="country-tag">Địa danh Hoa Kỳ</span>
+                    <span class="country-tag">Hàn Quốc Hallyu</span>
+                    <span class="country-tag">Thái Lan Siam</span>
+                    <span class="country-tag">Di sản Singapore</span>
+                </div>
+            </section>
+
+            <section class="features-grid">
+                <div class="feature-item glass-card scroll-reveal">
+                    <span class="feature-icon">🎞️</span>
+                    <h3>Studio Giao diện & Màu sắc</h3>
+                    <p>Chọn từ hàng chục bố cục—Cổ điển, Vé cũ, Polaroid, French Jardin, và Japanese Nippon. Phối hợp với tâm trạng của bạn bằng các bảng màu được tuyển chọn.</p>
+                </div>
+                <div class="feature-item glass-card scroll-reveal">
+                    <span class="feature-icon">🗺️</span>
+                    <h3>Du lịch để Mở khoá</h3>
+                    <p>Danh mục theo vị trí mang đến các mẫu tem địa phương. Mở khóa các gói quốc gia độc quyền như Di sản Việt Nam, Tokyo Neon Nhật Bản và Hoa Kỳ Hoang dã khi đi du lịch.</p>
+                </div>
+                <div class="feature-item glass-card scroll-reveal">
+                    <span class="feature-icon">📔</span>
+                    <h3>Sổ lưu niệm Kỹ thuật số</h3>
+                    <p>Không chỉ là thư viện ảnh, đó là một kho báu. Xây dựng các album mang đậm tính thẩm mỹ với băng dính washi và nghệ thuật chữ để lưu giữ kỷ niệm của bạn.</p>
+                </div>
+                <div class="feature-item glass-card scroll-reveal">
+                    <span class="feature-icon">☁️</span>
+                    <h3>Riêng tư & Đồng bộ</h3>
+                    <p>Ảnh của bạn được lưu trên thiết bị. Bật Đồng bộ iCloud qua Đăng nhập bằng Apple để đồng bộ hóa liền mạch bộ sưu tập giữa các thiết bị mà không làm lộn xộn Cuộn Camera.</p>
+                </div>
+            </section>
+
+            <footer class="footer scroll-reveal">
+                <div class="footer-links">
+                    <a href="support.html">Hỗ trợ</a>
+                    <a href="privacy.html">Chính sách Bảo mật</a>
+                    <a href="terms.html">Điều khoản Dịch vụ</a>
+                </div>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem;">&copy; 2026 Stampfolio. Mọi quyền được bảo lưu.</p>
+            </footer>
+        </div>
     </div>
+
+    <!-- Language detection script (same as terms.html) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var userLang = navigator.language || navigator.userLanguage;
+            var isVi = userLang.toLowerCase().includes('vi');
+            
+            var enDiv = document.querySelector('.lang-en');
+            var viDiv = document.querySelector('.lang-vi');
+            
+            if (isVi) {
+                if (enDiv) enDiv.style.display = 'none';
+                if (viDiv) viDiv.style.display = 'block';
+            } else {
+                if (enDiv) enDiv.style.display = 'block';
+                if (viDiv) viDiv.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
