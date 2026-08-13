@@ -22,20 +22,22 @@
 @layer theme {
   :root {
     color-scheme: light dark;
+    /* Use system serif to match iOS app */
     --font-sans: 'Outfit', -apple-system, sans-serif;
-    --font-serif: 'Playfair Display', serif;
+    --font-serif: ui-serif, 'Playfair Display', Georgia, serif;
     
-    /* Colors (light-dark resolves based on color-scheme) */
-    --color-bg: light-dark(#fdfaf0, #0a0a0c);
-    --color-text: light-dark(#1a1a1c, #f4f4f5);
-    --color-text-muted: light-dark(#666, #a1a1aa);
-    --color-primary: light-dark(#d9534f, #e87b78);
-    --color-accent: light-dark(#2e6f5e, #439b85);
+    /* StampfolioTheme Colors */
+    --color-bg: light-dark(#faf5ef, #181818);
+    --color-text: light-dark(#1a1714, #e5c07b);
+    --color-text-muted: light-dark(#6b665e, #a09f9f);
+    --color-primary: light-dark(#2e6b6b, #d4af37);
+    --color-accent: light-dark(#439b85, #e5c07b);
+    --color-surface: light-dark(#f7f3ed, #1e1e1e);
     
     /* Glassmorphism */
-    --glass-bg: light-dark(rgba(255, 255, 255, 0.7), rgba(20, 20, 25, 0.7));
-    --glass-border: light-dark(rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.15));
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --glass-bg: light-dark(rgba(255, 255, 255, 0.6), rgba(30, 30, 30, 0.7));
+    --glass-border: light-dark(rgba(0, 0, 0, 0.05), rgba(229, 192, 123, 0.15));
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
     
     --radius-lg: 24px;
     --radius-md: 16px;
@@ -112,7 +114,8 @@
     font-size: clamp(1.2rem, 0.8rem + 2vw, 1.5rem);
     color: var(--color-text-muted);
     max-width: 600px;
-    margin-bottom: var(--space-lg);
+    margin: 0 auto var(--space-lg);
+    text-align: center;
     text-wrap: pretty;
   }
 
